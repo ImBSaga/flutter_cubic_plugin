@@ -9,11 +9,7 @@ class ContactInitial extends ContactState {
   const ContactInitial();
 }
 
-class ContactLoading extends ContactState {
-  const ContactLoading();
-}
-
 class ContactLoaded extends ContactState {
-  final Contact contact;
+  final List<ContactData> contact;
   const ContactLoaded(this.contact);
 }

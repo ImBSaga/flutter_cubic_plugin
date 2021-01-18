@@ -1,14 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:contact/models/contact.dart';
+import 'package:contact/models/contactData.dart';
 import 'package:meta/meta.dart';
 
 part 'contact_state.dart';
 
 class ContactCubit extends Cubit<ContactState> {
-  final Contact _contact;
-  ContactCubit(this._contact) : super(ContactInitial());
+  final ContactData _contactList;
+  ContactCubit(this._contactList) : super(ContactInitial());
 
-  void getContact() async {
-    emit(ContactLoading());
+  void getContact(Contact contact) {
+    final contact = _contactList.fetchContact();
+    emit(ContactLoaded(contact));
   }
 }
